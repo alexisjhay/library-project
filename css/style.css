@@ -22,7 +22,7 @@ img {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%) scale(0);
 	width: min(500px, 90%);
 	padding: 2rem;
 	border: 1px solid #eeeeee;
@@ -32,6 +32,8 @@ img {
 	display: grid;
 	align-content: center;
 	gap: 1rem;
+
+	transition: 0.2s ease-in;
 }
 
 .form-header {
