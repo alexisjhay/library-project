@@ -3,9 +3,35 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<title>Library Project</title>
 		<link rel="stylesheet" href="css/style.css" />
 		<script src="javascript/script.js" defer></script>
 	</head>
-	<body></body>
+	<body>
+		<button class="add-user">Add User</button>
+		<div class="user-form">
+			<div class="form-header">
+				<h2>Add a Book</h2>
+				<button class="close">X</button>
+			</div>
+
+			<form>
+				<label for="title">Title:</label>
+				<input type="text" name="title" id="title" required />
+
+				<label for="author">Author:</label>
+				<input type="text" name="author" id="author" required />
+
+				<label for="page">Page:</label>
+				<input type="number" name="page" id="page" required />
+
+				<div>
+					<input type="checkbox" name="status" id="read-status" />
+					<label for="read-status">Have you read this book ?</label>
+				</div>
+
+				<input type="submit" value="Add Book" />
+			</form>
+		</div>
+	</body>
 </html>
