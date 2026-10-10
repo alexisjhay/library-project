@@ -18,6 +18,7 @@ img {
 	display: block;
 }
 
+/* FORM */
 .user-form {
 	position: absolute;
 	top: 50%;
@@ -34,6 +35,7 @@ img {
 	gap: 1rem;
 
 	transition: 0.2s ease-in;
+	background-color: #fff;
 }
 
 .form-header {
@@ -93,4 +95,132 @@ form input[type="submit"] {
 	font: inherit;
 	cursor: pointer;
 	font-weight: bold;
+}
+
+/* CONTAINER */
+
+.container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: auto auto auto 1fr;
+	min-height: 100vh;
+	margin: 0rem auto;
+	width: min(1400px, 90%);
+}
+
+.container > * {
+	padding: 1rem 0;
+}
+
+/* LOGS */
+
+.header {
+	grid-column: 1 / -1;
+	justify-items: center;
+}
+
+.library-logs {
+	grid-area: 2 / 1 / 3 / -1;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	display: grid;
+	justify-items: center;
+	background-color: #333;
+	color: white;
+	padding: 1rem 0;
+	font-weight: bold;
+}
+
+/* ACTIONS*/
+
+.user-actions {
+	grid-column: 1 / -1;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 1rem;
+	border-bottom: 1px solid #d0cfcf;
+}
+
+.user-actions > * {
+	border-radius: 25px;
+	padding: 0.5rem 1rem;
+	font: inherit;
+}
+
+.user-actions button {
+	background-color: gray;
+	color: white;
+	font-weight: bold;
+	border: none;
+	width: 250px;
+	justify-self: end;
+	cursor: pointer;
+}
+
+.user-actions input {
+	border: 1px solid #cccccc;
+}
+/* RESULT*/
+
+.result {
+	grid-area: 4 / 1 / -1 / -1;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	grid-auto-rows: 1fr;
+	gap: 2rem;
+}
+
+.card {
+	max-height: 330px;
+	border-radius: 20px;
+	border-left: #347360 6px solid;
+	box-shadow: 0px 6px 16px -5px rgba(0, 0, 0, 0.2);
+	padding: 2rem;
+	gap: 1rem;
+	display: grid;
+	grid-template-rows: auto auto auto auto 1fr;
+	transition: 0.2s ease;
+}
+
+.card:hover {
+	scale: 1.1;
+}
+
+.status-btn {
+	padding: 0.3rem 1rem;
+	border-radius: 25px;
+	border: none;
+}
+
+.read {
+	background-color: transparent;
+	border: 2px solid #347360;
+	color: #347360;
+}
+
+.unread {
+	background-color: transparent;
+	border: 2px solid rgb(173, 10, 10);
+	color: rgb(173, 10, 10);
+}
+
+.button-container {
+	align-self: end;
+	justify-self: end;
+}
+
+.button-container button {
+	padding: 0.6rem 1.5rem;
+	border: none;
+	border-radius: 25px;
+	font-weight: bold;
+	color: white;
+	cursor: pointer;
+}
+
+.button-container .update-btn {
+	background-color: #347360;
+}
+
+.button-container .delete-btn {
+	background-color: rgb(173, 10, 10);
 }
