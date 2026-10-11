@@ -33,10 +33,6 @@ function Book(title, author, page, status) {
 	this.status = status;
 }
 
-function addBookToLibrary() {
-	myLibrary.push();
-}
-
 // RETRIEVING INPUT
 
 const titleText = document.querySelector("#title");
@@ -55,4 +51,10 @@ function getPage() {
 }
 function getStatus() {
 	return statusText.checked ? true : false;
+}
+
+// PUSH BOOK TO ARRAY
+
+function addBookToLibrary() {
+	myLibrary.push(new Book(getTitle(), getAuthor(), getPage(), getStatus()));
 }
