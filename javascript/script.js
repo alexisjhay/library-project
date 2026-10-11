@@ -18,6 +18,7 @@ function openForm() {
 }
 
 function closeForm() {
+	resetInputs();
 	addBookForm.classList.replace("show", "hidden");
 	form.classList.replace("form-active", "form-inactive");
 }
@@ -75,7 +76,6 @@ form.addEventListener("submit", (e) => {
 
 	addBookToLibrary();
 	closeForm();
-	resetInputs();
 
 	resetResult();
 	renderCard();
