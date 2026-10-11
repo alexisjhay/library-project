@@ -76,7 +76,18 @@ form.addEventListener("submit", (e) => {
 	addBookToLibrary();
 	closeForm();
 	resetInputs();
+
+	resetResult();
+	renderCard();
 });
+
+// RENDER CARDS
+
+function renderCard() {
+	for (let [input, books] of myLibrary.entries()) {
+		createCard(books.title, books.author, books.page, books.status);
+	}
+}
 
 // CREATE CARD
 
@@ -158,6 +169,10 @@ function createButton(card) {
 }
 
 //RESETS
+
+function resetResult() {
+	result.textContent = "";
+}
 
 function resetInputs() {
 	titleText.value = "";
