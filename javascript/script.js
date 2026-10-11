@@ -1,3 +1,5 @@
+// ADD BOOK FORM
+
 const openFormBtn = document.querySelector(".add-user");
 const closeFormBtn = document.querySelector(".close-form");
 const form = document.querySelector(".book-form");
@@ -22,6 +24,21 @@ function closeForm() {
 	addBookForm.classList.replace("show", "hidden");
 	form.classList.replace("form-active", "form-inactive");
 }
+
+// ADD BOOK EVENT HANDLING
+
+form.addEventListener("click", (e) => {
+	e.stopPropagation();
+});
+
+form.addEventListener("submit", (e) => {
+	e.preventDefault();
+
+	addBookToLibrary();
+	closeForm();
+
+	reset();
+});
 
 // OBJECT CONSTRUCTOR
 
@@ -69,20 +86,26 @@ function addBookToLibrary() {
 	myLibrary.push(new Book(getTitle(), getAuthor(), getPage(), getStatus()));
 }
 
-// ADD BOOK EVENT HANDLING
+// RENDER LIBRARY LOGS
 
-form.addEventListener("click", (e) => {
-	e.stopPropagation();
-});
+function totalBooksCount() {
+	const totalBooks = document.querySelector(".total-books");
+	const total = myLibrary.length;
 
-form.addEventListener("submit", (e) => {
-	e.preventDefault();
+	totalBooks.textContent = `Total Books: ${total}`;
+}
 
-	addBookToLibrary();
-	closeForm();
+function totalReadCount() {
+	const readBooks = document.querySelector(".read-total");
+	const readTotal = myLibrary.filter((book) => book.status).length;
+	readBooks.textContent = `Read: ${readTotal}`;
+}
 
-	reset();
-});
+function totalUnreadCount() {
+	const unreadBooks = document.querySelector(".unread-total");
+	const unreadTotal = myLibrary.filter((book) => !book.status).length;
+	unreadBooks.textContent = `Unread: ${unreadTotal}`;
+}
 
 // RENDER CARDS
 
@@ -174,6 +197,8 @@ function createButton(index, card) {
 	card.appendChild(btnContainer);
 }
 
+// CARD BUTTONS EVENT HANDLING
+
 function doChangeStatus(index, btn) {
 	btn.addEventListener("click", () => {
 		myLibrary[index].changeStatus();
@@ -202,6 +227,10 @@ function resetInputs() {
 }
 
 function reset() {
+	totalUnreadCount();
+	totalReadCount();
+	totalBooksCount();
+
 	resetResult();
 	renderCard();
 }
