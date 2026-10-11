@@ -81,8 +81,7 @@ form.addEventListener("submit", (e) => {
 	addBookToLibrary();
 	closeForm();
 
-	resetResult();
-	renderCard();
+	reset();
 });
 
 // RENDER CARDS
@@ -168,6 +167,7 @@ function createButton(index, card) {
 	changeStatusButton.textContent = "Change Status";
 
 	doChangeStatus(index, changeStatusButton);
+	deleteBook(index, deleteButton);
 
 	btnContainer.appendChild(changeStatusButton);
 	btnContainer.appendChild(deleteButton);
@@ -177,10 +177,14 @@ function createButton(index, card) {
 function doChangeStatus(index, btn) {
 	btn.addEventListener("click", () => {
 		myLibrary[index].changeStatus();
-		resetResult();
-		renderCard();
+		reset();
+	});
+}
 
-		console.log(myLibrary[index]);
+function deleteBook(index, btn) {
+	btn.addEventListener("click", () => {
+		myLibrary.splice(index, 1);
+		reset();
 	});
 }
 
@@ -197,6 +201,11 @@ function resetInputs() {
 	statusText.checked = false;
 }
 
+function reset() {
+	resetResult();
+	renderCard();
+}
+
 // PAGE LOADS
 
-renderCard();
+reset();
