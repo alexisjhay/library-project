@@ -47,7 +47,7 @@ function getAuthor() {
 	return authorText.value.trim();
 }
 function getPage() {
-	return pageText.value.trim();
+	return Number(pageText.value.trim());
 }
 function getStatus() {
 	return statusText.checked ? true : false;
@@ -58,3 +58,17 @@ function getStatus() {
 function addBookToLibrary() {
 	myLibrary.push(new Book(getTitle(), getAuthor(), getPage(), getStatus()));
 }
+
+// ADD BOOK EVENT HANDLING
+
+form.addEventListener("click", (e) => {
+	e.stopPropagation();
+});
+
+form.addEventListener("submit", (e) => {
+	e.preventDefault();
+
+	addBookToLibrary();
+	closeForm();
+	resetInputs();
+});
