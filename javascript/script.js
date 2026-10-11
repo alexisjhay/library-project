@@ -23,7 +23,7 @@ function closeForm() {
 	form.classList.replace("form-active", "form-inactive");
 }
 
-// ARRAY HANDLING
+// OBJECT CONSTRUCTOR
 
 const myLibrary = [
 	new Book("The Hobbit", "J.R.R. Tolkien", 310, true),
@@ -38,6 +38,10 @@ function Book(title, author, page, status) {
 	this.page = page;
 	this.status = status;
 }
+
+Book.prototype.changeStatus = function () {
+	this.status = !this.status;
+};
 
 // RETRIEVING INPUT
 
@@ -84,8 +88,8 @@ form.addEventListener("submit", (e) => {
 // RENDER CARDS
 
 function renderCard() {
-	for (let [input, books] of myLibrary.entries()) {
-		createCard(books.title, books.author, books.page, books.status);
+	for (let [index, books] of myLibrary.entries()) {
+		createCard(index, books.title, books.author, books.page, books.status);
 	}
 }
 
@@ -93,7 +97,7 @@ function renderCard() {
 
 const result = document.querySelector(".result");
 
-function createCard(title, author, page, status) {
+function createCard(index, title, author, page, status) {
 	const card = document.createElement("div");
 	card.classList.add("card");
 
@@ -101,7 +105,7 @@ function createCard(title, author, page, status) {
 	createCardAuthor(author, card);
 	createCardPage(page, card);
 	createCardStatus(status, card);
-	createButton(card);
+	createButton(index, card);
 
 	result.appendChild(card);
 }
@@ -150,7 +154,7 @@ function createCardStatus(status, card) {
 	card.appendChild(statusContainer);
 }
 
-function createButton(card) {
+function createButton(index, card) {
 	const btnContainer = document.createElement("div");
 	btnContainer.classList.add("button-container");
 
@@ -163,9 +167,21 @@ function createButton(card) {
 	deleteButton.textContent = "Delete";
 	changeStatusButton.textContent = "Change Status";
 
+	doChangeStatus(index, changeStatusButton);
+
 	btnContainer.appendChild(changeStatusButton);
 	btnContainer.appendChild(deleteButton);
 	card.appendChild(btnContainer);
+}
+
+function doChangeStatus(index, btn) {
+	btn.addEventListener("click", () => {
+		myLibrary[index].changeStatus();
+		resetResult();
+		renderCard();
+
+		console.log(myLibrary[index]);
+	});
 }
 
 //RESETS
