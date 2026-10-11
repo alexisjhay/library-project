@@ -160,30 +160,25 @@ form input[type="submit"] {
 .user-actions {
 	grid-column: 1 / -1;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	justify-content: center;
 	gap: 1rem;
 	border-bottom: 1px solid #d0cfcf;
-}
-
-.user-actions > * {
-	border-radius: 25px;
-	padding: 0.5rem 1rem;
-	font: inherit;
 }
 
 .user-actions button {
 	background-color: gray;
 	color: white;
-	font-weight: bold;
+	font-weight: 800;
+	font-size: 1.2rem;
 	border: none;
 	width: 250px;
 	justify-self: end;
 	cursor: pointer;
+
+	border-radius: 25px;
+	padding: 0.5rem 1rem;
 }
 
-.user-actions input {
-	border: 1px solid #cccccc;
-}
 /* RESULT*/
 
 .result {
