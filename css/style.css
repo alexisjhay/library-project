@@ -10,6 +10,7 @@ body {
 	font-family: "Poppins", sans-serif;
 	position: relative;
 	min-height: 100vh;
+	min-height: 100dvh;
 }
 
 img {
@@ -19,11 +20,31 @@ img {
 }
 
 /* FORM */
-.user-form {
+.add-book-form {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.436);
+	display: grid;
+	place-content: center;
+}
+
+.hidden {
+	visibility: hidden;
+}
+.active {
+	visibility: visible;
+}
+
+form {
+	background-color: #fff;
+
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%) scale(0);
+
 	width: min(500px, 90%);
 	padding: 2rem;
 	border: 1px solid #eeeeee;
@@ -36,6 +57,14 @@ img {
 
 	transition: 0.2s ease-in;
 	background-color: #fff;
+}
+
+.form-active {
+	transform: translate(-50%, -50%) scale(1);
+}
+
+.form-inactive {
+	transform: translate(-50%, -50%) scale(0);
 }
 
 .form-header {
@@ -52,11 +81,6 @@ img {
 	border: none;
 	border-radius: 50%;
 	cursor: pointer;
-}
-
-form {
-	display: grid;
-	gap: 0.5rem;
 }
 
 form label {
@@ -103,7 +127,7 @@ form input[type="submit"] {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: auto auto auto 1fr;
-	min-height: 100vh;
+	height: 100%;
 	margin: 0rem auto;
 	width: min(1400px, 90%);
 }

@@ -1,15 +1,22 @@
 const openFormBtn = document.querySelector(".add-user");
 const closeFormBtn = document.querySelector(".close-form");
+const form = document.querySelector(".book-form");
+const addBookForm = document.querySelector(".add-book-form");
 
 openFormBtn.addEventListener("click", openForm);
-closeFormBtn.addEventListener("click", closeForm);
+closeFormBtn.addEventListener("click", (e) => {
+	e.preventDefault();
+	closeForm();
+});
+
+addBookForm.addEventListener("click", closeForm);
 
 function openForm() {
-	const userForm = document.querySelector(".user-form");
-	userForm.style.transform = "translate(-50%, -50%) scale(1)";
+	addBookForm.classList.replace("hidden", "show");
+	form.classList.replace("form-inactive", "form-active");
 }
 
 function closeForm() {
-	const userForm = document.querySelector(".user-form");
-	userForm.style.transform = "translate(-50%, -50%) scale(0)";
+	addBookForm.classList.replace("show", "hidden");
+	form.classList.replace("form-active", "form-inactive");
 }
