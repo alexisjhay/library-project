@@ -4,6 +4,7 @@ const form = document.querySelector(".book-form");
 const addBookForm = document.querySelector(".add-book-form");
 
 openFormBtn.addEventListener("click", openForm);
+
 closeFormBtn.addEventListener("click", (e) => {
 	e.preventDefault();
 	closeForm();
@@ -19,4 +20,13 @@ function openForm() {
 function closeForm() {
 	addBookForm.classList.replace("show", "hidden");
 	form.classList.replace("form-active", "form-inactive");
+}
+
+const myLibrary = [];
+
+function Book(title, author, page, status) {
+	this.title = title;
+	this.author = author;
+	this.page = page;
+	this.status = status;
 }
