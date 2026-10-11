@@ -24,7 +24,12 @@ function closeForm() {
 
 // ARRAY HANDLING
 
-const myLibrary = [];
+const myLibrary = [
+	new Book("The Hobbit", "J.R.R. Tolkien", 310, true),
+	new Book("1984", "George Orwell", 328, false),
+	new Book("The Great Gatsby", "F. Scott Fitzgerald", 180, true),
+	new Book("To Kill a Mockingbird", "Harper Lee", 281, true),
+];
 
 function Book(title, author, page, status) {
 	this.title = title;
@@ -73,6 +78,85 @@ form.addEventListener("submit", (e) => {
 	resetInputs();
 });
 
+// CREATE CARD
+
+const result = document.querySelector(".result");
+
+function createCard(title, author, page, status) {
+	const card = document.createElement("div");
+	card.classList.add("card");
+
+	createCardTitle(title, card);
+	createCardAuthor(author, card);
+	createCardPage(page, card);
+	createCardStatus(status, card);
+	createButton(card);
+
+	result.appendChild(card);
+}
+
+function createCardTitle(title, card) {
+	const cardTitle = document.createElement("h2");
+	cardTitle.textContent = title;
+
+	card.appendChild(cardTitle);
+}
+
+function createCardAuthor(author, card) {
+	const cardAuthor = document.createElement("h4");
+	cardAuthor.textContent = `by: ${author}`;
+
+	card.appendChild(cardAuthor);
+}
+
+function createCardPage(page, card) {
+	const cardPage = document.createElement("p");
+	cardPage.classList.add("pages");
+	cardPage.textContent = `${page} pages`;
+
+	card.appendChild(cardPage);
+}
+
+function createCardStatus(status, card) {
+	const statusContainer = document.createElement("status-container");
+	const statusTitle = document.createElement("span");
+
+	const cardStatus = document.createElement("span");
+	cardStatus.classList.add("status-span");
+
+	statusTitle.textContent = "Status: ";
+
+	if (status) {
+		cardStatus.textContent = "Read";
+		cardStatus.classList.add("read");
+	} else {
+		cardStatus.textContent = "Unread";
+		cardStatus.classList.add("unread");
+	}
+
+	statusContainer.appendChild(statusTitle);
+	statusContainer.appendChild(cardStatus);
+	card.appendChild(statusContainer);
+}
+
+function createButton(card) {
+	const btnContainer = document.createElement("div");
+	btnContainer.classList.add("button-container");
+
+	const deleteButton = document.createElement("button");
+	deleteButton.classList.add("delete-btn");
+
+	const changeStatusButton = document.createElement("button");
+	changeStatusButton.classList.add("update-btn");
+
+	deleteButton.textContent = "Delete";
+	changeStatusButton.textContent = "Change Status";
+
+	btnContainer.appendChild(changeStatusButton);
+	btnContainer.appendChild(deleteButton);
+	card.appendChild(btnContainer);
+}
+
 //RESETS
 
 function resetInputs() {
@@ -81,3 +165,7 @@ function resetInputs() {
 	pageText.value = "";
 	statusText.checked = false;
 }
+
+// PAGE LOADS
+
+renderCard();
