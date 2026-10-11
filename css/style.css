@@ -169,6 +169,7 @@ form input[type="submit"] {
 	gap: 2rem;
 }
 
+/* CARD */
 .card {
 	max-height: 330px;
 	border-radius: 20px;
