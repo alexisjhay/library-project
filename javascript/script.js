@@ -72,3 +72,12 @@ form.addEventListener("submit", (e) => {
 	closeForm();
 	resetInputs();
 });
+
+//RESETS
+
+function resetInputs() {
+	titleText.value = "";
+	authorText.value = "";
+	pageText.value = "";
+	statusText.checked = false;
+}
