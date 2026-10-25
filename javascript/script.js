@@ -40,7 +40,20 @@ form.addEventListener("submit", (e) => {
 	reset();
 });
 
-// OBJECT CONSTRUCTOR
+// OBJECT CLASS
+
+class Book {
+	constructor(title, author, page, status) {
+		this.title = title;
+		this.author = author;
+		this.page = page;
+		this.status = status;
+	}
+
+	changeStatus() {
+		this.status = !this.status;
+	}
+}
 
 const myLibrary = [
 	new Book("The Hobbit", "J.R.R. Tolkien", 310, true),
@@ -48,17 +61,6 @@ const myLibrary = [
 	new Book("The Great Gatsby", "F. Scott Fitzgerald", 180, true),
 	new Book("To Kill a Mockingbird", "Harper Lee", 281, true),
 ];
-
-function Book(title, author, page, status) {
-	this.title = title;
-	this.author = author;
-	this.page = page;
-	this.status = status;
-}
-
-Book.prototype.changeStatus = function () {
-	this.status = !this.status;
-};
 
 // RETRIEVING INPUT
 
@@ -91,7 +93,6 @@ function addBookToLibrary() {
 function totalBooksCount() {
 	const totalBooks = document.querySelector(".total-books");
 	const total = myLibrary.length;
-
 	totalBooks.textContent = `Total Books: ${total}`;
 }
 
